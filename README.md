@@ -21,3 +21,14 @@ Here are the steps I took before installing apache on ubuntu
 3. To verify that apache2 is running as a Service in our OS, use following command
 `sudo systemctl status apache2`
 
+# To allow any traffic to our web server
+1. I edited the inbound rules
+2. added another rule; HTTP with the cdr blocks 0.0.0.0/0
+Then I ran this command on ubuntun shell curl `http://localhost:80`
+
+# To access Apache HTTP server on the web browser
+1. we need to open this on the web browser http://http://3.83.97.237/
+2. To check the public IP Address 
+I ran the below command on ubuntu shell
+`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+[Apache HTTP server](http://3.83.97.237/)
