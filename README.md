@@ -32,3 +32,20 @@ Then I ran this command on ubuntun shell curl `http://localhost:80`
 I ran the below command on ubuntu shell
 `curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
 [Apache HTTP server](http://3.83.97.237/)
+
+
+# STEP 2 - INSTALLING MYSQL
+1. I ran the following command to install MySql
+`sudo apt install mysql-server`
+2. To log in to the MySQL console
+`sudo mysql`
+3. I ran a security script that comes pre-installed with MySQL
+`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';`
+4. To exit mysql
+`mysql> exit`
+5. Start the interactive script by running:
+`sudo mysql_secure_installation`
+6. test if you’re able to log in to the MySQL
+`sudo mysql -p`
+7. To exit the MySQL console, type:
+`exit`
