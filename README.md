@@ -50,3 +50,53 @@ I ran the below command on ubuntu shell
 `sudo mysql -p`
 7. To exit the MySQL console, type:
 `exit`
+
+# STEP 3 — INSTALLING PHP
+1. To install these 3 packages at once, run:
+`sudo apt install php libapache2-mod-php php-mysql`
+2. Once the installation is finished, you can run the following command to confirm your PHP version:
+`php -v`
+
+# STEP 4 — CREATING A VIRTUAL HOST FOR YOUR WEBSITE USING APACHE
+**Setting up a domain called projectlamp**
+1. Create the directory for projectlamp using ‘mkdir’ command as follows:
+`sudo mkdir /var/www/projectlamp`
+
+2. Next, assign ownership of the directory with your current system user:
+`sudo chown -R $USER:$USER /var/www/projectlamp`
+3. Create and open a new configuration file in Apache's directory using vi command line editor
+`sudo vi /etc/apache2/sites-available/projectlamp.conf`
+4. Command to show the new file in the sites-available directory
+`sudo ls /etc/apache2/sites-available`
+5. The output shows 
+`000-default.conf  default-ssl.conf  projectlamp.conf`
+6. Using a2ensite command to enable the new virtual host
+`sudo a2ensite projectlamp`
+7. To disable the default website that comes installed with Apache
+`sudo a2dissite 000-default`
+8. To make sure your configuration file doesn’t contain syntax errors, run:
+`sudo apache2ctl configtest`
+9. Finally, reload Apache so these changes take effect:
+`sudo systemctl reload apache2`
+10. Creating an index.html file from the web root /var/www/projectlamp
+`sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html`
+11. Now go to your browser and try to open your website URL using IP address:
+http://54.162.92.213:80
+12. Now go to your browser and try to open your website URL using DNS
+
+http://ec2-54-162-92-213.compute-1.amazonaws.com:80
+
+# STEP 5 — ENABLE PHP ON THE WEBSITE
+1. To create a directory index 
+`sudo vim /etc/apache2/mods-enabled/dir.conf`
+To reload apache so that the changes can take effect
+`sudo systemctl reload apache2`
+2. Create a new file named index.php inside your custom web root folder:
+`vim /var/www/projectlamp/index.php`
+3. This will open a blank file. Add the following text, which is valid PHP code, inside the file:
+`<?php
+phpinfo();`
+
+
+
+
